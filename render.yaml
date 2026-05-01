@@ -3,4 +3,7 @@ services:
     name: portfolio-react
     env: static
     buildCommand: npm run build
+    # Ensure devDependencies (like Vite) are installed during the build on Render
+    # (Render sometimes installs only production deps). This installs dev deps then builds.
+    buildCommand: npm install --include=dev && npm run build
     staticPublishPath: dist
